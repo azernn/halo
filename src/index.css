@@ -1,0 +1,39 @@
+@import "tailwindcss";
+.scrolling-text-wrapper {
+  width: 100%;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.scrolling-text {
+  display: flex;
+  flex-wrap: nowrap;
+  font-weight:700;
+  color: #333;
+  padding: 10px 0;
+}
+
+.message-item {
+  margin-right: 3rem; 
+  white-space: nowrap;
+  font-size: 11px;
+  font-family: sans-serif;
+  display: inline-flex;
+  align-items: center;
+}
+
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 10s linear infinite;
+}
+
