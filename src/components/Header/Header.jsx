@@ -68,6 +68,8 @@ function Header() {
                             {activeCategory?.Subcategory?.length > 0 ? (
                                 <div className="flex flex-col gap-6 px-[35px] py-5 w-1/2">
                                     {activeCategory.Subcategory.map((sub) => (
+                                        console.log(activeCategory),
+                                        
                                         <a key={sub.id} className="text-sm hover: cursor-pointer uppercase font-bold text-[15px]">{sub.name}</a>
                                     ))}
                                 </div>
@@ -97,7 +99,7 @@ function Header() {
                 </div>
             </div>
             <div className={` h-full ] bg-white w-full transition-transform duration-800 ease-in-out
-  ${open ? 'translate-x-0' : '-translate-x-full'}`}>
+  ${open ? 'translate-x-0' : '-translate-x-full'}` }>
   <BurgerMenu data={data} sub={activeCategory} />
 </div>
         </header>
