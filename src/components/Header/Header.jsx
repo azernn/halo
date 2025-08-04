@@ -1,20 +1,26 @@
-import SlideText from '../SlideText'
+import SlideText from '../SlideText';
 import { IoSearchSharp } from "react-icons/io5";
 import { FaRegBookmark, FaRegUser, FaBasketShopping } from "react-icons/fa6";
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { getData } from '../../../services';
-import { useState } from 'react';
-import { useRef } from 'react';
+import CardSimple from '../Main/CardSimple';
+import BurgerMenu from './BurgerMenu';
+import Hamburger from 'hamburger-react'
+
 function Header() {
     const [isOpen, setIsOpen] = useState(false);
+    const [open, setOpen] = useState(false)
+    const [activeCategory, setActiveCategory] = useState(null);
     const timeoutRef = useRef(null);
-    const [data, setData] = useState([])
+    const [data, setData] = useState([]);
+    const [search, setSearch] = useState(false);
+
     useEffect(() => {
         getData().then(res => {
-            setData(res.all)
-            console.log(res.all);
-        })
-    }, {})
+            setData(res);
+        });
+    }, []);
+
     const handleEnter = () => {
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
@@ -22,67 +28,79 @@ function Header() {
         setIsOpen(true);
     };
 
-    useEffect(() => {
-        const subcats = []   
-        data?.forEach(item => {
-            const key = Object.keys(item)[0];
-            subcats.push(key)
-        })
-        console.log(subcats);
-        
-    }, [data])
-
     const handleLeave = () => {
         timeoutRef.current = setTimeout(() => {
             setIsOpen(false);
-        }, 150);
+            setActiveCategory(null);
+        }, 100);
     };
+
     return (
-        <header>
+        <header className='bg-transparent fixed top-0 left-0 w-full z-50 text-white'>
             <SlideText />
-            <div className="px-2 py-4 border-b-1 border-gray-300 " >
+            <div className="px-2 py-4 border-b-1 border-gray-300">
                 <div className="max-w-[1200px] flex justify-between mx-auto items-center">
-                    <div className="flex items-center">
-                        <a href="">
-                            <img src="https://www.newlinehalo.dk/on/demandware.static/-/Sites-halo-Library/default/dw337e1b9b/homepage/HALO_LOGO.svg" alt="" />
-                        </a>
+                    <div className="flex items-center w-full md:w-[17%]">
+                        <a href=""><img src="/src/assets/img/HALO_LOGO.svg" className='filter invert' alt="Logo" /></a>
                     </div>
-                    <div className='w-full flex items-center justify-center '>
-                        <ul className="items-stretch hidden space-x-3 lg:flex">
-                            {data?.map((item, i) => (
-                                <li className="flex capitalize" key={i} >
-                                    <a href="#"
-                                        onMouseEnter={handleEnter}
-                                        onMouseLeave={handleLeave}
-                                        className="flex items-center px-4 -mb-1">{Object.keys(item)}</a>
+                    <div className='w-full flex items-center justify-center' >
+                        <ul className="items-stretch hidden w-[33%] justify-between lg:flex">
+                            {data?.slice(0, 4).map((item, i, arr) => (
+                                <li
+                                    className="flex  uppercase text-[12px] font-semibold relative"
+                                    key={i}
+                                    onMouseLeave={handleLeave}
+                                    onMouseEnter={() => {
+                                        handleEnter();
+                                        setActiveCategory(item);
+                                    }}>
+                                    <a href="#" className="flex items-center -mb-1">{item.name} </a>
+                                    {i !== arr.length - 1 && <span className="ml-[13px] xl:ml-5">/</span>}
                                 </li>
                             ))}
-
                         </ul>
                         <div
-                            className={`fixed top-24 left-0 w-full mt-1  bg-black shadow-lg rounded p-2 transition-all duration-200 ease-in-out
-                             ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
-                        >
-                           ds
+                            className={`absolute top-24 left-0 w-full mt-1 flex justify-between bg-white shadow-lg text-black p-4 transition-all duration-300 ease-in-out transform
+                                  ${isOpen && activeCategory
+                                    ? 'opacity-100 visible translate-y-0'
+                                    : 'opacity-0 invisible -translate-y-2'}`}
+                            onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+                            {activeCategory?.Subcategory?.length > 0 ? (
+                                <div className="flex flex-col gap-6 px-[35px] py-5 w-1/2">
+                                    {activeCategory.Subcategory.map((sub) => (
+                                        <a key={sub.id} className="text-sm hover: cursor-pointer uppercase font-bold text-[15px]">{sub.name}</a>
+                                    ))}
+                                </div>
+                            ) : (
+                                <p className="text-sm">No subcategories</p>
+                            )}
+                            <div className='flex w-1/2 gap-3'>
+                                <CardSimple className={`rounded-xl ${'h-[520px]'}`} />
+                                <CardSimple className={`rounded-xl ${'h-[520px]'}`} />
+                            </div>
                         </div>
                     </div>
-                    <div className='flex gap-4 items-center'>
-                        <IoSearchSharp />
+                    <div className='flex gap-4 items-center w-[340px] justify-end lg:w-[272px] '>
+                        <IoSearchSharp onMouseEnter={() => setSearch(true)} />
+                        <input type="text"
+                            className={`transition-all duration-300 bg-transparent text-white outline-none border-b border-white
+                            ${search ? 'w-32 opacity-100' : 'w-0 opacity-0 overflow-hidden pointer-events-none'}`}
+                            placeholder='Search' />
                         <FaRegBookmark />
                         <FaRegUser />
                         <FaBasketShopping />
-
-                        <button className="p-4 lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-gray-800">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                            </svg>
+                        <button className="lg:hidden text-white">
+                            <Hamburger size={16} toggle={setOpen} toggled={open} />
                         </button>
-                    </div>
 
+                    </div>
                 </div>
             </div>
+            <div className={` h-full ] bg-white w-full transition-transform duration-800 ease-in-out
+  ${open ? 'translate-x-0' : '-translate-x-full'}`}>
+  <BurgerMenu data={data} sub={activeCategory} />
+</div>
         </header>
-    )
+    );
 }
-
-export default Header
+export default Header;

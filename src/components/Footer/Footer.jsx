@@ -24,7 +24,7 @@ function Footer() {
 
   return (
     <div className='bg-[#ebe9e3] mt-[120px]'>
-      <SlideText />
+      <div className='text-black  '><SlideText/></div>
       <div className='border-b border-gray-300  uppercase mt-5 flex  flex-col sm:flex-row '>
         <div className='p-6 flex flex-col gap-4 justify-evenly h-[290px] sm:w-[30%] md:border-none border-r-1 border-gray-300 sm:order-1 order-3'>
           <a href="" className=''>
@@ -93,9 +93,9 @@ function Footer() {
       </div>
       <div className='flex justify-between text-[11px] font-semibold p-4'>
         <p>CVR: 43317032 / ALL RIGHTS RESERVED</p>
-        <div className='w-[39%] md:w-[25%] flex justify-end'>
+        <div className='w-[39%] md:w-[28%] flex justify-end'>
           <div className='flex justify-between w-full'>
-            <div className='text-[13px] font-semibold flex items-center gap-2 uppercase'><TfiWorld /><span>Damnark</span> <span>DK EN</span></div>
+            <div className='text-[13px] font-semibold  items-center gap-2 uppercase hidden md:flex'><TfiWorld /><span>Damnark</span> <span>DK EN</span></div>
             <img src="https://www.newlinehalo.dk/on/demandware.static/Sites-halo-Site/-/default/dwc05deb7e/images/footer/thornico-logo.svg" alt="" />
           </div>
         </div>

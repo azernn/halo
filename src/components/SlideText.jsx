@@ -16,7 +16,7 @@ function SlideText() {
   const repeatedBlocks = Array(10).fill(messageBlock).flat();
 
   return (
-    <div className="headerTop flex border-b border-[#dfdfdf]">
+    <div className="headerTop flex border-b border-[#dfdfdf] " >
       <div className="scrolling-text-wrapper w-full overflow-hidden bg-white">
         <div className="scrolling-text flex whitespace-nowrap animate-scroll">
           {repeatedBlocks}
