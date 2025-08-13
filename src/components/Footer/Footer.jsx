@@ -17,13 +17,13 @@ function Footer() {
   function toggleMenu(id) {
     setOpenLists(prev =>
       prev.includes(id)
-        ? prev.filter(item => item !== id) // Əgər ID artıq varsa, çıxar
-        : [...prev, id] // Əgər ID yoxdursa, əlavə et
+        ? prev.filter(item => item !== id) 
+        : [...prev, id] 
     )
   }
 
   return (
-    <div className='bg-[#ebe9e3] mt-[120px]'>
+    <div className='bg-[#ebe9e3]'>
       <div className='text-black  '><SlideText/></div>
       <div className='border-b border-gray-300  uppercase mt-5 flex  flex-col sm:flex-row '>
         <div className='p-6 flex flex-col gap-4 justify-evenly h-[290px] sm:w-[30%] md:border-none border-r-1 border-gray-300 sm:order-1 order-3'>

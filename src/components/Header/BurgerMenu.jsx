@@ -5,8 +5,7 @@ function BurgerMenu({ data }) {
     const [subMenu, setSubmenu] = useState(null);
 
     return (
-        <div className="bg-[#ebe9e3] p-4 w-full h-screen relative overflow-hidden lg:hidden">
-            {/* Main Category Menu */}
+        <div className="bg-[#ebe9e3] p-4 w-full h-screen relative overflow-hidden lg:hidden ">
             <div className={`${subMenu ? '-translate-x-full' : 'translate-x-0'} transition-transform duration-500`}>
                 {data.slice(0, 4).map(item => (
                     <span

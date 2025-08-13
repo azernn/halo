@@ -8,8 +8,12 @@ async function getProd() {
     const res = await axios.get(`https://ecommerce.ibradev.me/products/all`);
     return res.data;
 }
+async function getItem(id) {
+    const res = await axios.get(`https://ecommerce.ibradev.me/products/get/${id}`);
+    return res.data;
+}
 async function getProdForCategory({page, subCategoryId}) {
     const res = await axios.get(`https://ecommerce.ibradev.me/products/all?page=${page}&subcategoryId=${subCategoryId}`);
     return res.data;
 }
-export{getData,getProd, getProdForCategory}
+export{getData,getProd, getProdForCategory,getItem}
