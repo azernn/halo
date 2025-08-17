@@ -28,10 +28,10 @@ function Details() {
     };
 
     return (
-        <div className='border-r border-gray-300 flex flex-col h-full'>
-            <div className='flex items-center p-4 md:flex-row flex-col '>
+        <div className='border-r border-gray-300  flex flex-col h-full '>
+            <div className='flex items-center p-4 md:flex-row flex-col mt-27'>
                 <div className=" md:w-1/2 w-full md:border-r border-gray-300 pt-3 h-[50vh] md:h-[80vh]">
-                    <Swiper
+                    <Swiper key={data.images?.length}
                         cssMode={true}
                         navigation={true}
                         mousewheel={true}

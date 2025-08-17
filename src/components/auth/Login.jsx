@@ -7,7 +7,7 @@ function Login() {
 	const [display, setDisplay] = useState(false)
 	return (
 		<div className='bg-[#ebe9e3] py-5'>
-		<div className=' flex items-center justify-evenly '>
+		<div className=' flex items-center justify-evenly mt-25 '>
 			<Link to={'/'} className='uppercase md:text-[16px] text-[12px] flex items-center gap-2 hover:underline'> <IoIosArrowBack />Go back</Link>
 			<h1 className='md:text-[29px] text-[16px] font-semibold '>Create account or  login</h1>
 			<h1></h1>

@@ -10,7 +10,7 @@ function Products({ data }) {
     <Link to={`/details/${data.id}`}
       state={data}
       className='border-r border-gray-300 border-b flex flex-col h-full'>
-      <div className="h-[335px] w-full  pt-3">
+      <div className="h-[335px] w-full pt-3">
         <Swiper
           cssMode={true}
           navigation={true}
@@ -19,12 +19,12 @@ function Products({ data }) {
           modules={[Navigation, Mousewheel, Keyboard]}
           className="w-full h-full "
         >
-          {data.images.map((item, i) => (
+          {data.images?.map((item, i) => (
             <SwiperSlide key={i} className='w-full h-full'>
               <img
                 src={item}
                 alt="product"
-                className='w-full h-full object-cover'
+                className='w-full h-full object-contain lg:object-cover '
               />
             </SwiperSlide>
           ))}

@@ -3,13 +3,7 @@ import { BiColor } from 'react-icons/bi';
 import { IoIosArrowDown, IoLogoFacebook, IoLogoInstagram } from "react-icons/io";
 import { TfiWorld } from "react-icons/tfi";
 import SlideText from '../SlideText';
-
-const data = [
-  { id: '1', title: '01 / Halo', list: ['Om HALO', 'Kontakt', 'Bliv forhandler', 'Butikker'] },
-  { id: '2', title: '02 / Kundeservice', list: ['FAQ', 'Levering', 'Returnering', 'Størrelsesguide', 'Min Konto', 'Handelsbetingelser', 'Privatlivspolitik', 'Cookies'] },
-  { id: '3', title: '03 / COLLECTIONSdım', list: ["Fleece", "Women's specific", "Outdoor", "Essentials"] },
-  { id: '4', title: ' Danmark', list: ["International", "Danmark DK EN"] }
-]
+import { footerData } from '../../consts/const';
 
 function Footer() {
   const [openLists, setOpenLists] = useState([])
@@ -48,7 +42,7 @@ function Footer() {
         </div>
         <div className='sm:w-[50%] order-2 md:border-none border-r-1 border-gray-300'>
           <div className=' md:hidden flex flex-col gap-7 py-6 '>
-            {data.map(item => {
+            {footerData.map(item => {
               const isExp = openLists.includes(item.id)
 
               return (
@@ -71,7 +65,7 @@ function Footer() {
             })}
           </div>
           <div className='border-r border-gray-300 gap-3 md:flex hidden '>
-            {data.slice(0, 3).map((item, i) => (
+            {footerData.slice(0, 3).map((item, i) => (
               <div key={i} className='w-[30%] border-l border-gray-300'>
                 <p className='py-4 px-5 cursor-pointer text-[11px] font-semibold'>{item.title}</p>
                 <ul>

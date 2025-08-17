@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import CardSimple from "./CardSimple";
 import Products from "./Products";
 import { getProdForCategory } from "../../../services";
+import { cardData } from '../../consts/const';
 
 function Main() {
   const [data, setData] = useState([]);
-
   useEffect(() => {
-    getProdForCategory({page : 1, subCategoryId : 2}).then(res => {
-      setData(res.data.slice(0,4));
-      // console.log(res.data);
+    
+    getProdForCategory({ page: 1, subCategoryId: 2 }).then(res => {
+      setData(res.data.slice(0, 4));
     });
   }, []);
   return (
@@ -30,25 +30,19 @@ function Main() {
           <button className="bg-white rounded-3xl lg:w-[12%] w-[30%] uppercase font-semibold py-[10px]" >Shop now</button>
         </div>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 '>
-      <CardSimple/>
-      <CardSimple/>
-      <CardSimple/>
-      <CardSimple/>
+      <div className=' '>
+        <CardSimple cardData={cardData.slice(0,4)}/>
       </div>
       <div id="azerin" className="flex flex-wrap">
-        {data.length > 0 && 
+        {data.length > 0 &&
           data.map(item => (
             <div className="w-1/2 md:w-1/4 m-0">
-               <Products key={item.id} data={item} />
+              <Products key={item.id} data={item} />
             </div>
           ))
         }
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 '>
-      <CardSimple/>
-      <CardSimple/>
-      </div>
+      <CardSimple cardData={cardData.slice(4,6)} />
     </>
 
   )
