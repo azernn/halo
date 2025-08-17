@@ -13,7 +13,7 @@ import BasketCard from '../admin/BasketCard';
 function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [open, setOpen] = useState(false);
-    const [showAddCard, setShowAddCard] = useState(true)
+    const [showAddCard, setShowAddCard] = useState(false)
     const [activeCategory, setActiveCategory] = useState(null);
     const timeoutRef = useRef(null);
     const [data, setData] = useState([]);
@@ -65,7 +65,7 @@ function Header() {
                 <div className="max-w-[1200px] flex justify-between mx-auto items-center pb-2">
                     <div className="flex items-center w-full md:w-[17%]">
                         <Link to={'/'}>
-                            <img src="/src/assets/img/HALO_LOGO.svg" className={`${scrolled || open || isOpen || location.pathname !== "/" ? "filter invert-0" : "filter invert"} w-[100%]`} alt="Logo" /></Link></div>
+                            <img src="https://www.newlinehalo.dk/on/demandware.static/-/Sites-halo-Library/default/dw337e1b9b/homepage/HALO_LOGO.svg" className={`${scrolled || open || isOpen || location.pathname !== "/" ? "filter invert-0" : "filter invert"} w-[100%]`} alt="Logo" /></Link></div>
                     <div className='w-full z-9999 flex items-center justify-center' >
                         <ul className="items-stretch hidden w-[33%] justify-between lg:flex">
                             {data?.slice(0, 4).map((item, i, arr) => (
