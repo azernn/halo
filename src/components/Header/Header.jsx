@@ -69,13 +69,14 @@ function Header() {
                     <div className='w-full z-9999 flex items-center justify-center' >
                         <ul className="items-stretch hidden w-[33%] justify-between lg:flex">
                             {data?.slice(0, 4).map((item, i, arr) => (
+                                console.log(item.slug),
                                 <li className="flex uppercase text-[12px] font-bold relative" key={i}
                                     onMouseLeave={handleLeave}
                                     onMouseEnter={() => {
                                         handleEnter();
                                         setActiveCategory(item);
                                     }}>
-                                    <a href="#" className="flex items-center -mb-1">{item.name} </a>
+                                    <Link to={`/category/${item.id}`} className="flex items-center -mb-1">{item.name} </Link>
                                     {i !== arr.length - 1 && <span className="ml-[13px] xl:ml-5">/</span>}
                                 </li>
                             ))}

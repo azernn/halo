@@ -21,7 +21,7 @@ function CardSimple({ className = '', cardData }) {
             <div className='flex justify-between w-full items-center absolute bottom-0 left-0 p-6'>
               <p className='font-bold text-[15px] text-white uppercase'>{item?.title}</p>
               <button className='w-[40px] h-[40px] cursor-pointer '>
-                <img src="/src/assets/img/link.svg" alt="" />
+                <img src="https://www.newlinehalo.dk/on/demandware.static/Sites-halo-Site/-/default/dwaf00f824/images/icons/action/link.svg" alt="" />
               </button>
             </div>
           </div>

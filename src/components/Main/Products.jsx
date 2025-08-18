@@ -32,7 +32,7 @@ function Products({ data }) {
       </div>
      <div className='px-6 uppercase text-[#1e1e1e] font-bold border-t border-gray-300 py-5 mt-4'>
           <p className='text-[13px]'>{data.name}</p>
-          <p className='text-[14px]'>{data.price.toLocaleString()} $</p>
+          <p className='text-[14px]'>{data.price} $</p>
         </div>
     </Link>
   );

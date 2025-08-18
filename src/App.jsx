@@ -6,17 +6,18 @@ import Basket from "./components/admin/Basket";
 import Categories from "./components/Main/Categories";
 import Layout from "./Layouts/Layout";
 import Favorites from "./components/admin/Favorites";
+import ProductsByName from "./components/Main/ProductsByName";
 
 function App() {
   return (
     <Routes>
-
       <Route path="/" element={<Layout />}>
         <Route path="/login" element={<Login />} />
         <Route path="/basket" element={<Basket />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route index element={<Main />} />
         <Route path="details/:id" element={<Details />} />
+        <Route path="/category/:id" element={< ProductsByName/>} />
         <Route path="categories/:id" element={<Categories />} />
       </Route>
     </Routes>
