@@ -21,7 +21,7 @@ function Header() {
     const location = useLocation()
     const [scrolled, setScrolled] = useState(false);
 
-    useEffect(() => { getData().then(res => { setData(res); }); }, []);
+    useEffect(() => { getData().then(res => { setData(res);}); }, []);
 
     useEffect(() => {
         const handleScroll = () => { window.scrollY > 20 ? setScrolled(true) : setScrolled(false) };

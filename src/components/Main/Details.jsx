@@ -13,7 +13,6 @@ function Details() {
     const [activeTab, setActiveTab] = useState(null);
     const [data, setData] = useState({});
     const [open, setOpen] = useState(false);
-
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     useEffect(() => {
@@ -26,6 +25,7 @@ function Details() {
     const islet = (elm) => {
         setActiveTab(elm);
     };
+   
 
     return (
         <div className='border-r border-gray-300  flex flex-col h-full '>
@@ -86,7 +86,7 @@ function Details() {
                         <p>{data.description}</p>
                     </div>
                 </div>
-                <SizeGuide handleClose={handleClose} open={open}/>
+                <SizeGuide handleClose={handleClose} open={open} />
             </div>
         </div>
     );

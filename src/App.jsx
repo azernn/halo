@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Main from "./components/Main/Main";
 import Login from "./components/auth/Login";
 import Details from "./components/Main/Details";
@@ -7,8 +7,16 @@ import Categories from "./components/Main/Categories";
 import Layout from "./Layouts/Layout";
 import Favorites from "./components/admin/Favorites";
 import ProductsByName from "./components/Main/ProductsByName";
+import { useEffect } from "react";
 
 function App() {
+  const location = useLocation()
+  useEffect(() => {
+    const ScrollToTop = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
+    ScrollToTop()
+  }, [location])
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -17,7 +25,7 @@ function App() {
         <Route path="/favorites" element={<Favorites />} />
         <Route index element={<Main />} />
         <Route path="details/:id" element={<Details />} />
-        <Route path="/category/:id" element={< ProductsByName/>} />
+        <Route path="/category/:id" element={< ProductsByName />} />
         <Route path="categories/:id" element={<Categories />} />
       </Route>
     </Routes>
