@@ -3,6 +3,7 @@ import axios from "axios";
 async function getData() {
     const res = await axios.get('https://ecommerce.ibradev.me/categories/all ');
     return res.data;
+    
 }
 async function getProd() {
     const res = await axios.get(`https://ecommerce.ibradev.me/products/all`);

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 
-function BurgerMenu({ data }) {
+function BurgerMenu({ data, setOpen }) {
     const [subMenu, setSubmenu] = useState(null);
 
     return (
@@ -23,13 +23,13 @@ function BurgerMenu({ data }) {
             <div className={`absolute top-0 right-0 w-full h-full bg-[#ebe9e3] text-black p-6 transform transition-transform duration-500 z-20
         ${subMenu ? 'translate-x-0' : 'translate-x-full'}`}>
                 <div className="mb-4  flex gap-3 items-center cursor-pointer" onClick={() => setSubmenu(null)}>‹
-                    <h3 className="text-sm font-bold uppercase ">{subMenu?.name}</h3></div>
+                    <Link  className="text-sm font-bold uppercase ">{subMenu?.name}</Link></div>
                 {subMenu?.Subcategory?.map(sub => (
-                    <Link key={sub.id} className="py-5 font-bold text-[19px] uppercase block hover:underline">{sub.name}</Link>
+                    <Link onClick={()=>setOpen(false)} key={sub.id} to={`/categories/${sub.id}`} className="py-5 font-bold text-[19px] uppercase block hover:underline">{sub.name}</Link>
                 ))}
             </div>
         </div>
     );
 }
 
-export default BurgerMenu;
+export default BurgerMenu;  

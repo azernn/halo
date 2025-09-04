@@ -8,6 +8,7 @@ import Layout from "./Layouts/Layout";
 import Favorites from "./components/admin/Favorites";
 import ProductsByName from "./components/Main/ProductsByName";
 import { useEffect } from "react";
+import Error from "./components/error/Error";
 
 function App() {
   const location = useLocation()
@@ -27,6 +28,7 @@ function App() {
         <Route path="details/:id" element={<Details />} />
         <Route path="/category/:id" element={< ProductsByName />} />
         <Route path="categories/:id" element={<Categories />} />
+        <Route path="*" element={<Error />} />
       </Route>
     </Routes>
   );
